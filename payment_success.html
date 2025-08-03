@@ -1,0 +1,56 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <link rel="stylesheet" href="sty.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Successful! 🎉</h1>
+        <p class="success-message">Your insurance payment has been successfully processed.</p>
+
+        <div id="transactionDetails">
+            <p><strong>Transaction ID:</strong> <span id="txnID"></span></p>
+            <p><strong>Policy Type:</strong> <span id="policyType"></span></p>
+            <p><strong>Total Amount:</strong> $<span id="totalAmount"></span></p>
+            <p><strong>Payment Date:</strong> <span id="paymentDate"></span></p>
+        </div>
+
+        <button class="btn" onclick="saveTransaction()">Save Receipt</button><br><br>
+        <button class="btn" onclick="goBack()">Go Back to Dashboard</button>
+    </div>
+
+    <script>
+        // Fetch details from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById("txnID").textContent = urlParams.get("transactionID") || "N/A";
+        document.getElementById("policyType").textContent = urlParams.get("policyType") || "N/A";
+        document.getElementById("totalAmount").textContent = urlParams.get("totalAmount") || "0";
+        document.getElementById("paymentDate").textContent = urlParams.get("paymentDate") || "N/A";
+
+        // Function to save receipt as a text file
+        function saveTransaction() {
+            const receipt = `Transaction ID: ${urlParams.get("transactionID")}\n` +
+                            `Policy Type: ${urlParams.get("policyType")}\n` +
+                            `Total Amount: $${urlParams.get("totalAmount")}\n` +
+                            `Payment Date: ${urlParams.get("paymentDate")}\n\n` +
+                            "Thank you for your payment!";
+            
+            const blob = new Blob([receipt], { type: "text/plain" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "Payment_Receipt.txt";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Function to go back to the dashboard
+        function goBack() {
+            window.location.href = "payment.html";
+        }
+    </script>
+</body>
+</html>

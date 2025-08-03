@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, <span id="adminName"></span>!</h2>
+        <p>You are successfully logged in as an admin.</p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        const loggedInAdmin = localStorage.getItem("loggedInAdmin");
+
+        if (!loggedInAdmin) {
+            window.location.href = "admin_auth.html";
+        } else {
+            const admin = JSON.parse(localStorage.getItem(loggedInAdmin));
+            document.getElementById("adminName").textContent = admin.adminName;
+        }
+
+        function logout() {
+            localStorage.removeItem("loggedInAdmin");
+            window.location.href = "index.html";
+        }
+    </script>
+    <script>
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    
+        if (!loggedInUser) {
+            window.location.href = "index.html"; // Redirect to login if not logged in
+        } else {
+            console.log("Welcome", loggedInUser.name); // Debugging
+            document.getElementById("username").innerText = loggedInUser.name;
+        }
+    
+        function logout() {
+            localStorage.removeItem("loggedInUser");
+            window.location.href = "index.html";
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+        }
+        .sidebar h2 {
+            text-align: center;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 10px;
+            border-bottom: 1px solid #34495e;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 20px;
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="claim_admin.html">Claims</a></li>
+            <li><a href="#employees">Employees</a></li>
+            <li><a href="payment.html">Payments</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1>Institution Admin Panel</h1>
+        <section id="overview">
+            <h2>Policy Overview</h2>
+            <p>Total Policies: <span id="total-policies">0</span></p>
+            <p>Active Policies: <span id="active-policies">0</span></p>
+        </section>
+        <section id="claims">
+            <h2>Claims Summary</h2>
+            <p>Pending Claims: <span id="pending-claims">0</span></p>
+            <p>Approved Claims: <span id="approved-claims">0</span></p>
+        </section>
+        <section id="employees">
+            <h2>Employee Enrollments</h2>
+            <ul id="employee-list"></ul>
+        </section>
+        <section id="payments">
+            <h2>Premium Collection</h2>
+            <p>Total Premium Collected: $<span id="total-premium">0</span></p>
+        </section>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const data = {
+                totalPolicies: 120,
+                activePolicies: 90,
+                pendingClaims: 15,
+                approvedClaims: 60,
+                employees: ["John Doe", "Jane Smith", "Alice Johnson"],
+                totalPremium: 50000
+            };
+
+            document.getElementById("total-policies").textContent = data.totalPolicies;
+            document.getElementById("active-policies").textContent = data.activePolicies;
+            document.getElementById("pending-claims").textContent = data.pendingClaims;
+            document.getElementById("approved-claims").textContent = data.approvedClaims;
+            document.getElementById("total-premium").textContent = data.totalPremium;
+
+            const employeeList = document.getElementById("employee-list");
+            data.employees.forEach(emp => {
+                const li = document.createElement("li");
+                li.textContent = emp;
+                employeeList.appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>
+

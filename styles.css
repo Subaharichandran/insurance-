@@ -1,0 +1,85 @@
+/* Apply the soft white background */
+body {
+    background-color: #FAFAF8; /* Soft White */
+    font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+h2 {
+    color: #001F3F; /* Navy */
+    text-align: center;
+}
+
+/* Card styling */
+.card {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #001F3F; /* Navy */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #005f73; /* Darker Navy */
+}
+
+/* Table styling */
+.table {
+    background-color: white;
+}
+
+.table th {
+    background-color: #007A99; /* Blue Turquoise */
+    color: white;
+    text-align: center;
+}
+
+.table td {
+    text-align: center;
+}
+
+/* Alternating row colors */
+.table tbody tr:nth-child(even) {
+    background-color: #C8C6C3; /* Cool Taupe */
+}
+
+.status-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: navy; /* Primary color */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.status-btn:hover {
+    background-color: #0077b6; /* Secondary color (Blue Turquoise) */
+}
+
+/* 🌟 Back to Dashboard Button */
+.dashboard-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #001F3F; /* Navy */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-btn:hover {
+    background-color: #0077b6; /* Blue Turquoise */
+    transform: scale(1.05);
+}

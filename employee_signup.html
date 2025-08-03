@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Signup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Signup</h2>
+        <form id="employeeSignupForm">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="employee_auth.html">Login</a></p>
+    </div>
+
+    <script>
+        document.getElementById("employeeSignupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const companyName = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim().toLowerCase();
+            const password = document.getElementById("password").value.trim();
+
+            let users = JSON.parse(localStorage.getItem("users")) || {};
+
+            if (users[email]) {
+                alert("User already registered! Please log in.");
+                window.location.href = "employee_auth.html";
+                return;
+            }
+
+            users[email] = { companyName, password: btoa(password) };
+            localStorage.setItem("users", JSON.stringify(users));
+
+            console.log("User registered:", { email, password: btoa(password) });
+
+            alert("Registration successful!.");
+            window.location.href = "index3.html";
+        });
+    </script>
+</body>
+</html>

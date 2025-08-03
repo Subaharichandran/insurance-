@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .policy-terms {
+            margin: 20px 0;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 5px;
+        }
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #2c3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .back-btn:hover {
+            background: #34495e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="policy-name">Policy Name</h1>
+        <h2>Terms & Conditions</h2>
+        <div id="policy-terms" class="policy-terms"></div>
+        <a href="policies.html" class="back-btn">Back to Policies</a>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const policyType = urlParams.get("policy");
+            
+            const policyDetails = {
+                "Health Insurance": "- Covers hospitalization, medical expenses, and treatments.\n- Pre-existing diseases covered after 2 years.\n- Cashless treatments available in network hospitals.\n- Maternity benefits after a waiting period of 1 year.",
+                "Life Insurance": "- Provides financial security to family after policyholder’s demise.\n- Lump sum payout or monthly benefits available.\n- Option to add critical illness rider.\n- Premium waiver in case of disability.",
+                "Accidental Insurance": "- Covers accidental injuries, disabilities, and death benefits.\n- Compensation for temporary and permanent disability.\n- Covers hospitalization expenses due to accidents.\n- Double benefit in case of severe injuries."
+            };
+            
+            document.getElementById("policy-name").innerText = policyType;
+            document.getElementById("policy-terms").innerText = policyDetails[policyType] || "No details available.";
+        });
+    </script>
+</body>
+</html>

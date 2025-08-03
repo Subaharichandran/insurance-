@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Signup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Signup</h2>
+        <form id="adminSignupForm">
+            <input type="text" id="adminName" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="admin_auth.html">Login</a></p>
+    </div>
+
+    <script>
+        document.getElementById("adminSignupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const adminName = document.getElementById("adminName").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (localStorage.getItem(email)) {
+                alert("Admin already registered! Please log in.");
+                window.location.href = "admin_auth.html";
+                return;
+            }
+
+            localStorage.setItem(email, JSON.stringify({ adminName, password }));
+
+            alert("Registration successful! Please log in.");
+            window.location.href = "admin_auth.html";
+        });
+    </script>
+</body>
+</html>

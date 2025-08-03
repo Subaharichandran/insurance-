@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Management Module</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e3f2fd;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2, h3 {
+            text-align: center;
+            color: #0d47a1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #0d47a1;
+            color: white;
+        }
+        .upload-section, .role-selector {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        select, input[type="file"], button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #0d47a1;
+        }
+        button {
+            background-color: #0d47a1;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #1565c0;
+        }
+        tr:nth-child(even) {
+            background-color: #f1f8ff;
+        }
+        tr:hover {
+            background-color: #bbdefb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Document Management System</h2>
+        <div class="role-selector">
+            <label>Select Role:</label>
+            <select id="role" onchange="filterDocuments()">
+                <option value="admin">Admin</option>
+                <option value="insurance">Insurance Company</option>
+            </select>
+        </div>
+
+        <div class="upload-section">
+            <h3>Upload Document</h3>
+            <input type="file" id="fileInput">
+            <button onclick="uploadDocument()">Upload</button>
+        </div>
+
+        <h3>Document List</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Document Name</th>
+                    <th>Type</th>
+                    <th>Uploaded By</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="documentTable">
+                <!-- Inbuilt Data -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let documents = [
+            { name: "Policy_Agreement.pdf", type: "Policy Document", uploadedBy: "admin" },
+            { name: "Claim_Form_123.pdf", type: "Claim Document", uploadedBy: "insurance" },
+            { name: "Employee_List.xlsx", type: "Employee Data", uploadedBy: "admin" }
+        ];
+
+        function renderTable() {
+            let table = document.getElementById("documentTable");
+            table.innerHTML = "";
+            let role = document.getElementById("role").value;
+            documents.forEach(doc => {
+                if (role === "admin" || (role === "insurance" && doc.uploadedBy === "insurance")) {
+                    let row = `<tr>
+                        <td>${doc.name}</td>
+                        <td>${doc.type}</td>
+                        <td>${doc.uploadedBy}</td>
+                        <td><button onclick="download('${doc.name}')">Download</button></td>
+                    </tr>`;
+                    table.innerHTML += row;
+                }
+            });
+        }
+
+        function uploadDocument() {
+            let fileInput = document.getElementById("fileInput");
+            if (fileInput.files.length > 0) {
+                let file = fileInput.files[0];
+                let role = document.getElementById("role").value;
+                documents.push({ name: file.name, type: "Uploaded Document", uploadedBy: role });
+                renderTable();
+                alert("Document uploaded successfully!");
+            } else {
+                alert("Please select a file to upload.");
+            }
+        }
+
+        function download(fileName) {
+            let link = document.createElement("a");
+            link.href = `files/${fileName}`;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function filterDocuments() {
+            renderTable();
+        }
+
+        document.addEventListener("DOMContentLoaded", renderTable);
+    </script>
+</body>
+</html>

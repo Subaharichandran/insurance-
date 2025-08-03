@@ -1,0 +1,87 @@
+body {
+    background-color: #FAFAF8; /* Soft White */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🌟 Centered Container */
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+/* 🌟 Header */
+h2 {
+    color: #001F3F; /* Navy */
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* 🌟 Status Box */
+.status-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 🌟 Input Field */
+.form-control {
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #C8C6C3; /* Cool Taupe */
+}
+
+/* 🌟 Check Status Button */
+.btn-check-status {
+    background-color: #001F3F; /* Navy */
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    padding: 12px;
+}
+
+.btn-check-status:hover {
+    background-color: #0077b6; /* Blue Turquoise */
+}
+
+/* 🌟 Status Display */
+.alert {
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+/* 🌟 Status Colors */
+.alert-success { background-color: #76e490; color: white; } /* Approved */
+.alert-danger { background-color: #f1808c; color: white; } /* Rejected */
+.alert-warning { background-color: #e6c38e; color: white; } /* In Process */
+
+/* 🌟 Back Button */
+.btn-primary {
+    background-color: #0077b6; /* Blue Turquoise */
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    padding: 12px;
+}
+
+.btn-primary:hover {
+    background-color: #005f8e;
+}
+
+/* 🌟 Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    .form-control, .btn {
+        font-size: 14px;
+    }
+}

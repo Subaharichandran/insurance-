@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <h2>Welcome Employee!</h2>
+        <ul>
+            <li><a href="#">Policy Management</a></li>
+            <li><a href="#">Insurance Tracking</a></li>
+            <li><a href="#">Policy Renewal</a></li>
+            <li><a href="#">Claims Management</a></li>
+            <li><a href="#">Payment</a></li>
+            <li><a href="#">Notifications</a></li>
+            <li><a href="#">Document Management</a></li>
+            <li><a href="#">Help Desk</a></li>
+        </ul>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function logout() {
+            alert("Logging out...");
+            window.location.href = "employee_auth.html"; // Redirect to login page
+        }
+    </script>
+</body>
+</html>

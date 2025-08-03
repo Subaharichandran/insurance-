@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Dashboard</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: #f4f4f4;
+        }
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: #0056b3;
+            color: white;
+            height: 100vh;
+            padding-top: 20px;
+            position: fixed;
+            transition: 0.3s;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+        .sidebar a:hover {
+            background: #00408b;
+            border-radius: 5px;
+        }
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            margin: 10px;
+            cursor: pointer;
+            color: white;
+        }
+        /* Main Content */
+        .main {
+            margin-left: 260px;
+            padding: 20px;
+            width: 100%;
+        }
+        .header {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .dashboard {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .card {
+            width: 30%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+        }
+        .card:hover {
+            background: #e3f2fd;
+        }
+        .table-container {
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                overflow: hidden;
+            }
+            .menu-btn {
+                display: block;
+                margin-left: 10px;
+            }
+            .main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="#" onclick="showSection('home')">🏠 Home</a>
+        <a href="#" onclick="showSection('policies')">📜 Policies</a>
+        <a href="#" onclick="showSection('claims')">📌 Claims Processed</a>
+        <a href="#" onclick="showSection('revenue')">💰 Premium Revenue</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+        <div class="header">Insurance Company Dashboard</div>
+
+        <!-- Home Section -->
+        <div class="container" id="home">
+            <div class="dashboard">
+                <div class="card" onclick="showSection('policies')">
+                    <h2 id="policy-count">Loading...</h2>
+                    <p>Total Policy Applications</p>
+                </div>
+                <div class="card" onclick="showSection('claims')">
+                    <h2 id="claim-count">Loading...</h2>
+                    <p>Total Claims Processed</p>
+                </div>
+                <div class="card" onclick="showSection('revenue')">
+                    <h2 id="premium-revenue">Loading...</h2>
+                    <p>Premium Revenue ($)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Policies Section -->
+        <div class="container" id="policies">
+            <div class="table-container">
+                <h3>Policy Applications</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Policy ID</th>
+                            <th>Client Name</th>
+                            <th>Plan</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="policy-table"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Claims Processed Section -->
+        <div class="container" id="claims">
+            <div class="table-container">
+                <h3>Claims Processed Overview</h3>
+                <p><b>Approved Claims:</b> 15</p>
+                <p><b>Rejected Claims:</b> 5</p>
+                <p><b>Pending Claims:</b> 8</p>
+            </div>
+        </div>
+
+        <!-- Premium Revenue Section -->
+        <div class="container" id="revenue">
+            <div class="table-container">
+                <h3>Premium Revenue Overview</h3>
+                <p><b>Total Revenue Collected:</b> $50,000</p>
+                <p><b>Monthly Breakdown:</b></p>
+                <ul>
+                    <li>January: $10,000</li>
+                    <li>February: $12,000</li>
+                    <li>March: $8,000</li>
+                    <li>April: $10,000</li>
+                    <li>May: $10,000</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample Data
+        const policies = [
+            { id: "P101", name: "John Doe", plan: "Health Plus", status: "Pending" },
+            { id: "P102", name: "Jane Smith", plan: "Life Secure", status: "Approved" }
+        ];
+
+        // Inject Policy Data
+        const policyTable = document.getElementById("policy-table");
+        policies.forEach(policy => {
+            const row = `<tr>
+                <td>${policy.id}</td>
+                <td>${policy.name}</td>
+                <td>${policy.plan}</td>
+                <td>${policy.status}</td>
+            </tr>`;
+            policyTable.innerHTML += row;
+        });
+
+        // Dashboard Stats
+        document.getElementById("policy-count").innerText = policies.length;
+        document.getElementById("claim-count").innerText = 28;
+        document.getElementById("premium-revenue").innerText = "$50,000";
+
+        // Show Sections
+        function showSection(section) {
+            document.querySelectorAll('.container').forEach(el => el.style.display = "none");
+            document.getElementById(section).style.display = "block";
+        }
+        showSection('home');
+
+        // Toggle Sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+        }
+    </script>
+
+</body>
+</html>
+

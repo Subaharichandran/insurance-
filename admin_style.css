@@ -1,0 +1,183 @@
+body {
+    background-color: #f8f9fa; /* Soft White */
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🌟 Centered Container */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+/* 🌟 Header */
+h2 {
+    color: #001f3f; /* Navy */
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* 🌟 Card-Like Table Container */
+.table-container {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* 🌟 Table Styling */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* 🌟 Table Headers */
+.table th {
+    background-color: #0077b6; /* Blue Turquoise */
+    color: white;
+    text-align: center;
+    padding: 14px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+/* 🌟 Table Cells */
+.table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 14px;
+    font-size: 15px;
+}
+
+/* 🌟 Alternating Row Colors */
+.table tbody tr:nth-child(even) {
+    background-color: #e6e6e6; /* Light Cool Taupe */
+}
+
+/* 🌟 Table Hover Effect */
+.table tbody tr:hover {
+    background-color: #d6d6d6; /* Subtle Hover Effect */
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* 🌟 Status Badges */
+.badge {
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+/* 🌟 Badge Colors */
+.badge-success { background-color: #28a745; /* Green */ }
+.badge-danger { background-color: #dc3545; /* Red */ }
+.badge-warning { background-color: #ff9800; /* Orange */ }
+
+/* 🌟 Action Buttons */
+.btn {
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🌟 Approve Button */
+.btn-success {
+    background-color: #28a745; /* Green */
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* 🌟 Reject Button */
+.btn-danger {
+    background-color: #dc3545; /* Red */
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+    transform: scale(1.05);
+}
+
+/* 🌟 Clear History Button */
+.btn-clear {
+    background-color: #918989; /* Cool Taupe */
+    color: white;
+}
+
+.btn-clear:hover {
+    background-color: #7a7575;
+}
+
+/* 🌟 Logout Button */
+.btn-secondary {
+    background-color: #001f3f; /* Navy */
+    font-weight: bold;
+}
+
+.btn-secondary:hover {
+    background-color: #004080;
+}
+
+/* 🌟 Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🌟 Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .table th, .table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+}
+
+/* 🌟 Back to Dashboard Button */
+.dashboard-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #001F3F; /* Navy */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-btn:hover {
+    background-color: #0077b6; /* Secondary Color (Blue Turquoise) */
+    transform: scale(1.05);
+}
+

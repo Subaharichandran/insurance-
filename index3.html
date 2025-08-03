@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .dashboard-container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+        }
+        .sidebar h2 {
+            text-align: center;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 10px;
+            text-align: center;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        .sidebar ul li:hover {
+            background: #34495e;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            flex: 1;
+            cursor: pointer;
+        }
+        #notifications {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .notification-mail {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h2>Employee Dashboard</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Policies</a></li>
+                <li><a href="claim.html">Claims</a></li>
+                <li><a href="emp_helpdesk.html">Help Desk</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </aside>
+        
+        <main class="main-content">
+            <h1> Welcome </h1>
+            <div class="cards">
+                <div class="card" id="policy-card" onclick="window.location.href='policies.html'">
+                    <h3>Active Policies</h3>
+                    <p id="policy-count">3</p>
+                </div>
+                <div class="card" id="claims-card">
+                    <h3>Pending Claims</h3>
+                    <p id="claims-count">1</p>
+                </div>
+            </div>
+            <h2>Notifications</h2>
+            <ul id="notifications"></ul>
+        </main>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const policies = 3;
+            const claims = 1;
+            const notifications = [
+                { subject: "Policy Renewal Reminder", body: "Your policy renewal is due next month." },
+                { subject: "New Policy Available", body: "A new insurance policy is available." }
+            ];
+            document.getElementById("policy-count").innerText = policies;
+            document.getElementById("claims-count").innerText = claims;
+            const notificationsList = document.getElementById("notifications");
+            notifications.forEach(note => {
+                let li = document.createElement("li");
+                li.classList.add("notification-mail");
+                li.innerHTML = `<strong>${note.subject}</strong><br>${note.body}`;
+                notificationsList.appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>
+

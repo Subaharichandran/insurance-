@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Policies</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .policy {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .policy a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        .policy a:hover {
+            text-decoration: underline;
+        }
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #2c3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .back-btn:hover {
+            background: #34495e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Active Policies</h1>
+        <div id="policies-list"></div>
+        <a href="index3.html" class="back-btn">Back to Dashboard</a>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const policies = [
+                { name: "Health Insurance", description: "Covers medical expenses including hospitalization and treatments." },
+                { name: "Life Insurance", description: "Provides financial security to your family in case of unforeseen events." },
+                { name: "Accidental Insurance", description: "Covers accidental injuries, disabilities, and death benefits." }
+            ];
+            
+            const policiesList = document.getElementById("policies-list");
+            policies.forEach(policy => {
+                let div = document.createElement("div");
+                div.classList.add("policy");
+                div.innerHTML = `<h3>${policy.name}</h3><p>${policy.description}</p><a href="policy_details.html?policy=${encodeURIComponent(policy.name)}">View Details</a>`;
+                policiesList.appendChild(div);
+            });
+        });
+    </script>
+</body>
+</html>

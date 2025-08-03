@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <link rel="stylesheet" href="sty.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Proceed Payment</h2>
+        <form id="paymentForm">
+            <label for="policyType">Policy Type:</label>
+            <select id="policyType">
+                <option value="Health Insurance">Health Insurance</option>
+                <option value="Life Insurance">Life Insurance</option>
+                <option value="Term Insurance">Life Insurance</option>
+            </select>
+
+            <label for="employeeGroup">Employee Group:</label>
+            <input type="text" id="employeeGroup" readonly>
+
+            <label for="numEmployees">Total Employees:</label>
+            <input type="text" id="numEmployees" readonly>
+
+            <label for="deductionPerPerson">Amount Deducted per Employee ($):</label>
+            <input type="text" id="deductionPerPerson" readonly>
+
+            <label for="totalAmount">Total Amount ($):</label>
+            <input type="text" id="totalAmount" readonly>
+
+            <label for="transactionID">Transaction ID:</label>
+            <input type="text" id="transactionID" readonly>
+
+            <label for="paymentDate">Payment Date:</label>
+            <input type="text" id="paymentDate" readonly>
+
+            <button type="button" class="btn" onclick="processPayment()">Proceed Payment</button>
+        </form>
+    </div>
+
+    <script src="scripta.js"></script>
+</body>
+</html>
